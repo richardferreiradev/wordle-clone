@@ -9,6 +9,12 @@ function App() {
   return (
     <div className="game-container">
       <div className="row">
+        {/* {word.map((x) => (
+          <Square letter={x} />
+        ))} */}
+        <Square />
+      </div>
+      {/* <div className="row">
         {word.map((x) => (
           <Square letter={x} />
         ))}
@@ -27,12 +33,7 @@ function App() {
         {word.map((x) => (
           <Square letter={x} />
         ))}
-      </div>
-      <div className="row">
-        {word.map((x) => (
-          <Square letter={x} />
-        ))}
-      </div>
+      </div> */}
     </div>
   );
 }

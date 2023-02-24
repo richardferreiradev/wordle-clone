@@ -17,16 +17,30 @@
   padding: 2.5px 0;
 }
 
-.letter-container {
+.input-container {
   height: 60px;
-  width: 60px;
+  width: 300px;
   background-color: #242424;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+}
+
+.input {
+  height: 50px;
+  width: 50px;
 }
 
 .letter {
-  font-size: 36px;
-  color: white;
+  height: 50px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  padding: 5px;
+  border: 3px solid #242424;
+  font-size: x-large;
+  margin: 5px;
 }

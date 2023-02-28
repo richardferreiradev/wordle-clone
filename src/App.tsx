@@ -1,39 +1,16 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-
-import { Square } from './square';
+import { Square } from './components/Square';
 import './App.css';
+import { Header } from './components/Header';
+import { Keyboard } from './components/Keyboard';
 
 function App() {
-  const word = ['Z', 'E', 'L', 'D', 'A'];
   return (
-    <div className="game-container">
-      <div className="row">
-        {/* {word.map((x) => (
-          <Square letter={x} />
-        ))} */}
+    <div className="container">
+      <Header />
+      <div className="game-container">
         <Square />
+        <Keyboard />
       </div>
-      {/* <div className="row">
-        {word.map((x) => (
-          <Square letter={x} />
-        ))}
-      </div>
-      <div className="row">
-        {word.map((x) => (
-          <Square letter={x} />
-        ))}
-      </div>
-      <div className="row">
-        {word.map((x) => (
-          <Square letter={x} />
-        ))}
-      </div>
-      <div className="row">
-        {word.map((x) => (
-          <Square letter={x} />
-        ))}
-      </div> */}
     </div>
   );
 }

@@ -29,10 +29,44 @@
 
 .keyboard-container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.keyboard-row-container {
+  display: flex;
   flex-direction: row;
 }
 
 .key {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #242424;
+  margin: 2px;
+  font-size: x-large;
+  font-weight: bold;
+  border-radius: 5px;
+  height: 70px;
+  width: 45px;
+}
+
+.key:hover {
+  cursor: pointer;
+}
+
+.enter-key {
+  font-size: medium;
+  background-color: #242424;
+  border-radius: 5px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  padding: 8px;
+  width: 60px;
 }

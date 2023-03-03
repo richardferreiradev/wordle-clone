@@ -9,36 +9,28 @@ interface GameProps {
   saveContext?: (values: GameProps) => void;
 }
 
-const defaultValues: GameProps = {
-  attempt1: [],
-  attempt2: [],
-  attempt3: [],
-  attempt4: [],
-  attempt5: [],
-};
+const GameContext = createContext<GameProps | null>(null);
 
-const GameContext = createContext(defaultValues);
+export const GameProvider = ({ children }: { children: ReactNode }) => {
+  const defaultValues: GameProps = {
+    attempt1: [],
+    attempt2: [],
+    attempt3: [],
+    attempt4: [],
+    attempt5: [],
+  };
 
-export const Provider = ({
-  children,
-  settings,
-}: {
-  children: ReactNode;
-  settings: GameProps;
-}) => {
-  const [context, setContext] = useState(settings || defaultValues);
+  const [context, setContext] = useState<GameProps>(defaultValues);
 
   const saveContext = (values: GameProps): void => {
     setContext(values);
   };
 
   return (
-    <GameContext.Provider value={{ settings: context, saveContext }}>
+    <GameContext.Provider value={{ ...context, saveContext }}>
       {children}
     </GameContext.Provider>
   );
 };
-
-export const GameConsumer = GameContext.Consumer;
 
 export default GameContext;

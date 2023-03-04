@@ -1,15 +1,16 @@
 import { createContext, ReactNode, useState } from 'react';
 
 interface GameProps {
-  attempt1: string[];
-  attempt2: string[];
-  attempt3: string[];
-  attempt4: string[];
-  attempt5: string[];
+  attempt1?: string[];
+  attempt2?: string[];
+  attempt3?: string[];
+  attempt4?: string[];
+  attempt5?: string[];
+  attempt6?: string[];
   saveContext?: (values: GameProps) => void;
 }
 
-const GameContext = createContext<GameProps | null>(null);
+const GameContext = createContext<GameProps>({});
 
 export const GameProvider = ({ children }: { children: ReactNode }) => {
   const defaultValues: GameProps = {
@@ -18,6 +19,7 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
     attempt3: [],
     attempt4: [],
     attempt5: [],
+    attempt6: [],
   };
 
   const [context, setContext] = useState<GameProps>(defaultValues);

@@ -3,7 +3,6 @@ import { Header } from './components/Header';
 import { Keyboard } from './components/Keyboard';
 import { GameProvider } from './global/game-context';
 import './App.css';
-import { useContext } from 'react';
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
         <Header />
         <div className="game-container">
           <Square />
-          <Keyboard attempt={1} />
+          <Keyboard />
         </div>
       </div>
     </GameProvider>

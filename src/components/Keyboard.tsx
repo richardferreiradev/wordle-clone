@@ -5,17 +5,45 @@ const first = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
 const second = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
 const third = ['DELETE', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENTER'];
 
-interface KeyboardProps {
-  attempt: number;
-}
-
-export const Keyboard: FC<KeyboardProps> = ({ attempt }) => {
+export const Keyboard: FC = () => {
   const context = useContext(GameContext);
+
+  /**
+   * We need logic to determine what attempt we are on and what determines an attempt finish.
+   */
+
   const handleKeyPress = (event: BaseSyntheticEvent) => {
-    context?.saveContext!({
-      ...context,
-      attempt1: [...context.attempt1, event.target.textContent],
-    });
+    // if (attempt === 1) {
+    //   context.saveContext!({
+    //     ...context,
+    //     attempt1: [...context.attempt1!, event.target.textContent],
+    //   });
+    // } else if (attempt === 2) {
+    //   context.saveContext!({
+    //     ...context,
+    //     attempt2: [...context.attempt2!, event.target.textContent],
+    //   });
+    // } else if (attempt === 3) {
+    //   context.saveContext!({
+    //     ...context,
+    //     attempt3: [...context.attempt3!, event.target.textContent],
+    //   });
+    // } else if (attempt === 4) {
+    //   context.saveContext!({
+    //     ...context,
+    //     attempt4: [...context.attempt4!, event.target.textContent],
+    //   });
+    // } else if (attempt === 5) {
+    //   context.saveContext!({
+    //     ...context,
+    //     attempt5: [...context.attempt5!, event.target.textContent],
+    //   });
+    // } else {
+    //   context.saveContext!({
+    //     ...context,
+    //     attempt6: [...context.attempt6!, event.target.textContent],
+    //   });
+    // }
   };
 
   return (

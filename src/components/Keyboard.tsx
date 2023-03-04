@@ -44,6 +44,7 @@ export const Keyboard: FC = () => {
     //     attempt6: [...context.attempt6!, event.target.textContent],
     //   });
     // }
+    console.log('');
   };
 
   return (

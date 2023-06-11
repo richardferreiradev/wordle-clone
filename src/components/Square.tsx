@@ -4,24 +4,26 @@ import './styles.css';
 
 const array = Array(6)
   .fill('')
-  .map((row) => new Array(5).fill(''));
+  .map(() => new Array(5).fill(''));
 
 export const Square: FC = () => {
   const context = useContext(GameContext);
   const [newArray, setArray] = useState<string[][]>(array);
 
   useEffect(() => {
-    const attempt1 = [...context?.attempt1];
+    const attempt1 = [...context!.attempt1];
     setArray([...array, attempt1]);
   }, [context]);
 
   return (
     <>
-      {newArray.map((x) => {
+      {newArray.map((x, idx) => {
         return (
-          <div className="row">
-            {x.map((y) => (
-              <div className="letter">{y}</div>
+          <div key={idx} className="row">
+            {x.map((y, idx) => (
+              <div key={idx} className="letter">
+                {y}
+              </div>
             ))}
           </div>
         );

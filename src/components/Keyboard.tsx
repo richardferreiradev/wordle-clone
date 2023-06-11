@@ -11,7 +11,7 @@ interface KeyboardProps {
 
 export const Keyboard: FC<KeyboardProps> = ({ attempt }) => {
   const context = useContext(GameContext);
-  const handleKeyPress = (event: BaseSyntheticEvent) => {
+  const handleClick = (event: BaseSyntheticEvent) => {
     context?.saveContext!({
       ...context,
       attempt1: [...context.attempt1, event.target.textContent],
@@ -21,24 +21,25 @@ export const Keyboard: FC<KeyboardProps> = ({ attempt }) => {
   return (
     <div className="keyboard-container">
       <div className="keyboard-row-container">
-        {first.map((x) => (
-          <div className="key" onClick={(e) => handleKeyPress(e)}>
+        {first.map((x, idx) => (
+          <div key={idx} className="key" onClick={(e) => handleClick(e)}>
             {x}
           </div>
         ))}
       </div>
       <div className="keyboard-row-container">
-        {second.map((x) => (
-          <div className="key" onClick={(e) => handleKeyPress(e)}>
+        {second.map((x, idx) => (
+          <div key={idx} className="key" onClick={(e) => handleClick(e)}>
             {x}
           </div>
         ))}
       </div>
       <div className="keyboard-row-container">
-        {third.map((x) => (
+        {third.map((x, idx) => (
           <div
+            key={idx}
             className={x.length !== 1 ? 'enter-key' : 'key'}
-            onClick={(e) => handleKeyPress(e)}
+            onClick={(e) => handleClick(e)}
           >
             {x}
           </div>

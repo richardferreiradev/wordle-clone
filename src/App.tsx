@@ -1,14 +1,24 @@
 import { Square } from './components/Square';
 import { Header } from './components/Header';
 import { Keyboard } from './components/Keyboard';
-import { GameProvider } from './global/game-context';
+import GameContext, { GameProvider } from './global/game-context';
+import { BaseSyntheticEvent, useContext } from 'react';
 import './App.css';
-import { useContext } from 'react';
 
-function App() {
+const App = () => {
+  const context = useContext(GameContext);
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    console.log(e.key);
+  };
+
   return (
     <GameProvider>
-      <div className="container">
+      <div
+        className="container"
+        tabIndex={0}
+        onKeyDown={(e) => handleKeyPress(e)}
+      >
         <Header />
         <div className="game-container">
           <Square />
@@ -17,6 +27,6 @@ function App() {
       </div>
     </GameProvider>
   );
-}
+};
 
 export default App;

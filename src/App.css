@@ -5,3 +5,7 @@
   align-items: center;
   padding-top: 100px;
 }
+
+.container:focus {
+  outline: none;
+}

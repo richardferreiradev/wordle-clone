@@ -1,5 +1,7 @@
 import { BaseSyntheticEvent, FC, useContext } from 'react';
-import GameContext from '../global/game-context';
+import GameContext from '../../global/game-context';
+import { KeyboardContainer } from './KeyboardContainer';
+import { KeyboardRow } from './KeyboardRow';
 
 const first = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
 const second = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
@@ -11,30 +13,48 @@ interface KeyboardProps {
 
 export const Keyboard: FC<KeyboardProps> = ({ attempt }) => {
   const context = useContext(GameContext);
+
   const handleClick = (event: BaseSyntheticEvent) => {
-    context?.saveContext!({
-      ...context,
-      attempt1: [...context.attempt1, event.target.textContent],
-    });
+    if (!context || !context.saveContext) return;
+    const { saveContext, board, rowNumber, columnNumber } = context;
+
+    const currentLetter = event.target.textContent;
+    if (currentLetter === 'ENTER' && columnNumber === 4) {
+      saveContext({
+        board: [...context!.board],
+        rowNumber: rowNumber + 1,
+        columnNumber: 0,
+      });
+      return;
+    } else if (currentLetter === 'ENTER') return;
+
+    const letterPosition = board[rowNumber].indexOf('');
+
+    if (letterPosition !== -1) {
+      board[rowNumber][letterPosition] = currentLetter;
+      saveContext({ board, rowNumber, columnNumber: letterPosition });
+    }
   };
 
+  const onEnter = () => {};
+
   return (
-    <div className="keyboard-container">
-      <div className="keyboard-row-container">
+    <KeyboardContainer>
+      <KeyboardRow>
         {first.map((x, idx) => (
           <div key={idx} className="key" onClick={(e) => handleClick(e)}>
             {x}
           </div>
         ))}
-      </div>
-      <div className="keyboard-row-container">
+      </KeyboardRow>
+      <KeyboardRow>
         {second.map((x, idx) => (
           <div key={idx} className="key" onClick={(e) => handleClick(e)}>
             {x}
           </div>
         ))}
-      </div>
-      <div className="keyboard-row-container">
+      </KeyboardRow>
+      <KeyboardRow>
         {third.map((x, idx) => (
           <div
             key={idx}
@@ -44,7 +64,7 @@ export const Keyboard: FC<KeyboardProps> = ({ attempt }) => {
             {x}
           </div>
         ))}
-      </div>
-    </div>
+      </KeyboardRow>
+    </KeyboardContainer>
   );
 };

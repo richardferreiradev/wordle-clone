@@ -70,3 +70,7 @@
   padding: 8px;
   width: 60px;
 }
+
+.enter-key:hover {
+  cursor: pointer;
+}

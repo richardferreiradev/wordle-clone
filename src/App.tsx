@@ -1,6 +1,6 @@
 import { Square } from './components/Square';
 import { Header } from './components/Header';
-import { Keyboard } from './components/Keyboard';
+import { Keyboard } from './components/Keyboard/Keyboard';
 import GameContext, { GameProvider } from './global/game-context';
 import { BaseSyntheticEvent, useContext } from 'react';
 import './App.css';

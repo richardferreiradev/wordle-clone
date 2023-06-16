@@ -1,20 +1,40 @@
 import { createContext, ReactNode, useState } from 'react';
 
+// interface GameProps {
+//   attempt1: string[];
+//   attempt2: string[];
+//   attempt3: string[];
+//   attempt4: string[];
+//   attempt5: string[];
+//   saveContext?: (values: GameProps) => void;
+// }
+
 interface GameProps {
-  attempt1: string[];
-  attempt2: string[];
-  attempt3: string[];
-  attempt4: string[];
-  attempt5: string[];
+  rowNumber: number;
+  columnNumber: number;
+  board: string[][];
   saveContext?: (values: GameProps) => void;
 }
 
+// const defaultValues: GameProps = {
+//   attempt1: [],
+//   attempt2: [],
+//   attempt3: [],
+//   attempt4: [],
+//   attempt5: [],
+// };
+
 const defaultValues: GameProps = {
-  attempt1: [],
-  attempt2: [],
-  attempt3: [],
-  attempt4: [],
-  attempt5: [],
+  rowNumber: 0,
+  columnNumber: 0,
+  board: [
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+    ['', '', '', '', ''],
+  ],
 };
 
 const GameContext = createContext<GameProps | null>(null);

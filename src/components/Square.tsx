@@ -2,32 +2,48 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import GameContext from '../global/game-context';
 import './styles.css';
 
-const array = Array(6)
-  .fill('')
-  .map(() => new Array(5).fill(''));
+// const boardTemplate = Array(6)
+//   .fill('')
+//   .map(() => new Array(5).fill(''));
+
+const template = [
+  ['R', 'E', 'A', 'C', 'T'],
+  ['T', 'E', 'A', 'C', 'H'],
+  ['S', 'T', 'U', 'D', 'Y'],
+  ['K', 'O', 'O', 'P', 'A'],
+  ['Z', 'E', 'L', 'D', 'A'],
+  ['B', 'U', 'B', 'B', 'A'],
+];
 
 export const Square: FC = () => {
   const context = useContext(GameContext);
-  const [newArray, setArray] = useState<string[][]>(array);
+  const [board, setBoard] = useState<string[][]>(template);
 
-  useEffect(() => {
-    const attempt1 = [...context!.attempt1];
-    setArray([...array, attempt1]);
-  }, [context]);
+  // useEffect(() => {
+  //   if (!context) return;
+
+  //   console.log(context.board);
+  //   setBoard(context.board);
+  // }, [context.board]);
 
   return (
     <>
-      {newArray.map((x, idx) => {
-        return (
-          <div key={idx} className="row">
-            {x.map((y, idx) => (
-              <div key={idx} className="letter">
-                {y}
-              </div>
-            ))}
-          </div>
-        );
-      })}
+      {context &&
+        context.board.map((row, rowIdx) => {
+          //console.log(row, rowIdx);
+          return (
+            <div key={rowIdx} className="row">
+              {row.map((col, colIdx) => {
+                //console.log(row, rowIdx, col, colIdx);
+                return (
+                  <div key={colIdx} className="letter">
+                    {col}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
     </>
   );
 };
